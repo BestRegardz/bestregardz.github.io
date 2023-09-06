@@ -1,7 +1,6 @@
 const comingSoonText = document.getElementById('coming-soon');
 let currentText = "Coming";
 let finalText = "Coming Soon...";
-
 let index = currentText.length;
 
 function typeText() {
@@ -9,9 +8,25 @@ function typeText() {
         currentText += finalText.charAt(index);
         comingSoonText.textContent = currentText;
         index++;
+        if (index === finalText.length) {
+            setTimeout(() => {
+                flickerDot();
+                setTimeout(typeText, 5000);
+            }, 1000);
+        }
     } else {
-        clearInterval(typing);
+        comingSoonText.textContent = "Coming Soon";
+        index = "Coming".length;
     }
+}
+
+function flickerDot() {
+    if (comingSoonText.textContent === "Coming Soon.") {
+        comingSoonText.textContent = "Coming Soon";
+    } else {
+        comingSoonText.textContent = "Coming Soon.";
+    }
+    setTimeout(flickerDot, 1000);
 }
 
 const typing = setInterval(typeText, 200);
