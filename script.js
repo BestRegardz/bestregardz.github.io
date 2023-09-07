@@ -8,11 +8,9 @@ function typeText() {
         currentText += finalText.charAt(index);
         comingSoonText.textContent = currentText;
         index++;
-        if (index === finalText.length) {
-            setTimeout(() => {
-                flickerDot();
-            }, 1000);
-        }
+        setTimeout(typeText, 500);
+    } else {
+        setTimeout(flickerDot, 5000);
     }
 }
 
@@ -32,10 +30,12 @@ function flickerDot() {
 }
 
 function resetAnimation() {
-    currentText = "Coming";
-    index = currentText.length;
-    comingSoonText.textContent = currentText;
-    typeText();
+    setTimeout(() => {
+        currentText = "Coming";
+        index = currentText.length;
+        comingSoonText.textContent = currentText;
+        typeText();
+    }, 5000);
 }
 
 // Initial start
