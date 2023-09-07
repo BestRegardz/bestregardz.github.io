@@ -1,6 +1,6 @@
 const comingSoonText = document.getElementById('coming-soon');
 let currentText = "Coming";
-let finalText = "Coming Soon...";
+const finalText = "Coming Soon...";
 let index = currentText.length;
 
 function typeText() {
@@ -11,25 +11,35 @@ function typeText() {
         if (index === finalText.length) {
             setTimeout(() => {
                 flickerDot();
-                setTimeout(typeText, 5000);
             }, 1000);
         }
-    } else {
-        comingSoonText.textContent = "Coming Soon";
-        index = "Coming".length;
     }
 }
 
 function flickerDot() {
     if (comingSoonText.textContent === "Coming Soon.") {
         comingSoonText.textContent = "Coming Soon";
+        setTimeout(() => {
+            comingSoonText.textContent = "Coming Soon.";
+            setTimeout(() => {
+                resetAnimation();
+            }, 1000);
+        }, 1000);
     } else {
         comingSoonText.textContent = "Coming Soon.";
+        setTimeout(flickerDot, 1000);
     }
-    setTimeout(flickerDot, 1000);
 }
 
-const typing = setInterval(typeText, 200);
+function resetAnimation() {
+    currentText = "Coming";
+    index = currentText.length;
+    comingSoonText.textContent = currentText;
+    typeText();
+}
+
+// Initial start
+typeText();
 
 // Prepare the logo for future clicks
 const logo = document.getElementById('logo');
