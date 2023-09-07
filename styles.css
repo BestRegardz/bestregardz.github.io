@@ -4,43 +4,29 @@ body {
     height: 100vh;
     align-items: center;
     justify-content: center;
-    background: #e6e6e6;
-    color: rgba(255, 255, 255, 0.8);
+    background: radial-gradient(circle at center, transparent, grey 70%, black 100%);
     overflow: hidden;
+    animation: whirlpool 10s infinite;
+}
+
+@keyframes whirlpool {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 360deg 0;
+    }
 }
 
 #container {
     display: flex;
     flex-direction: column;
     align-items: center;
+    z-index: 2;
 }
 
 #logo {
     width: 40vw;
     cursor: pointer;
-}
-
-#coming-soon {
-    font-size: 3em;
-    margin-top: 2rem;
-    opacity: 0.8;
-    animation: typing 4s steps(11) infinite, blink .5s step-end infinite alternate;
-}
-
-@keyframes typing {
-    from {
-        width: 0;
-    }
-    to {
-        width: 11ch;
-    }
-}
-
-@keyframes blink {
-    from {
-        border-right: .2em solid white;
-    }
-    to {
-        border-right: .2em solid transparent;
-    }
+    z-index: 3;
 }
