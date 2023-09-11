@@ -43,7 +43,7 @@ body, html {
 
 .logo {
     width: auto;
-    height: 60vmin; /* 60% of the smallest viewport dimension */
+    height: 40vmin; /* 60% of the smallest viewport dimension */
     transition: transform 0.3s ease-in-out;
     margin-bottom: 20px; /* Added margin to give space between the logo and the text */
 }
