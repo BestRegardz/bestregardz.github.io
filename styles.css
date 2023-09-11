@@ -1,3 +1,21 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url('Roboto.woff2') format('woff2'),
+         url('Roboto.woff') format('woff');
+    /* Adjust paths and formats as needed */
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Trajan Pro';
+    src: url('TrajanPro.woff2') format('woff2'),
+         url('TrajanPro.woff') format('woff');
+    /* Adjust paths and formats as needed */
+    font-weight: normal;
+    font-style: normal;
+}
+
 body, html {
     margin: 0;
     padding: 0;
@@ -17,6 +35,7 @@ body, html {
     height: 100%;
     background: radial-gradient(circle at top center, #2b1f63, #1c2137 70%);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     z-index: -1;
@@ -30,4 +49,16 @@ body, html {
 
 .logo:hover {
     transform: scale(1.1);
+}
+
+.brand-name {
+    font-family: 'Roboto', sans-serif;
+    font-size: 2rem;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.q {
+    font-family: 'Trajan Pro', serif;
 }
