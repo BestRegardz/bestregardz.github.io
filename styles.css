@@ -1,7 +1,7 @@
 @font-face {
     font-family: 'Roboto';
-    src: url('fonts/Roboto.woff2') format('woff2'),
-         url('fonts/Roboto.woff') format('woff');
+    src: url('Roboto.woff2') format('woff2'),
+         url('Roboto.woff') format('woff');
     /* Adjust paths and formats as needed */
     font-weight: normal;
     font-style: normal;
@@ -9,8 +9,8 @@
 
 @font-face {
     font-family: 'Trajan Pro';
-    src: url('fonts/TrajanPro.woff2') format('woff2'),
-         url('fonts/TrajanPro.woff') format('woff');
+    src: url('TrajanPro.woff2') format('woff2'),
+         url('TrajanPro.woff') format('woff');
     /* Adjust paths and formats as needed */
     font-weight: normal;
     font-style: normal;
