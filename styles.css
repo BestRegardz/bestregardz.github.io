@@ -1,17 +1,15 @@
 @font-face {
     font-family: 'Roboto';
-    src: url('Roboto.woff2') format('woff2'),
-         url('Roboto.woff') format('woff');
-    /* Adjust paths and formats as needed */
+    src: url('fonts/Roboto.woff2') format('woff2'),
+         url('fonts/Roboto.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Trajan Pro';
-    src: url('TrajanPro.woff2') format('woff2'),
-         url('TrajanPro.woff') format('woff');
-    /* Adjust paths and formats as needed */
+    src: url('fonts/TrajanPro.woff2') format('woff2'),
+         url('fonts/TrajanPro.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -43,23 +41,39 @@ body, html {
 
 .logo {
     width: auto;
-    height: 40vmin; /* 60% of the smallest viewport dimension */
+    height: 60vmin;
     transition: transform 0.3s ease-in-out;
-    margin-bottom: 20px; /* Added margin to give space between the logo and the text */
+    margin-bottom: 20px;
 }
 
 .logo:hover {
     transform: scale(1.1);
 }
 
-.brand-name {
+.brand-name span {
     font-family: 'Roboto', sans-serif;
-    font-size: 10rem; /* Increased size by 500% */
-    color: #396fcc;   /* Set color to #396fcc */
-    display: flex;
-    align-items: center;
+    font-weight: 500; 
+    font-size: 10rem; 
+    display: inline-block;
+    vertical-align: middle;
+    color: #396fcc;
+    transform-origin: center bottom;
 }
 
 .q {
     font-family: 'Trajan Pro', serif;
+    font-weight: bold;
+    transform: scaleY(0.66) scaleX(0.72);
+}
+
+.d {
+    transform: scaleY(0.70) scaleX(1); 
+}
+
+.i {
+    transform: scaleY(0.48) scaleX(0.72); 
+}
+
+.other {
+    transform: scaleY(0.66) scaleX(0.72);
 }
