@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Email CSV Data</title>
+  <style>
+    /* Add your CSS styling here */
+  </style>
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script>
+    // Initialize EmailJS
+    emailjs.init("pVh4GgFcR__1WQ2I2");
+
+    function formatCSV(csvData) {
+      const lines = csvData.trim().split('\n');
+      let formatted = '';
+      lines.forEach(line => {
+        formatted += line.replace(',', ', ') + '\n';
+      });
+      return formatted;
+    }
+
+    function readCSVAndSendEmail() {
+      // Read recipient email from local text file (assuming it's in the same directory)
+      fetch('testLocalITMail.txt').then(response => response.text()).then(recipientEmail => {
+        
+        // Read CSV data (assuming it's in the same directory)
+        fetch('__HMRequest5.csv').then(response => response.text()).then(csvData => {
+          
+          // Format CSV data
+          const formattedCSV = formatCSV(csvData);
+          
+          // Prepare email data
+          var emailParams = {
+            to_email: recipientEmail.trim(),
+            subject: '::HMRequest9',
+            body: formattedCSV
+          };
+
+          // Send email
+          emailjs.send('service_2380vm8', 'template_xmjqpp5', emailParams)
+          .then((response) => {
+            alert('Email sent successfully!');
+          }, (error) => {
+            alert('Failed to send email: ' + JSON.stringify(error));
+          });
+        });
+      });
+    }
+  </script>
+</head>
+<body>
+  <button onclick="readCSVAndSendEmail()">Send Email</button>
+</body>
+</html>
