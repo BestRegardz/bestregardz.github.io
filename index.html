@@ -1,26 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gradient Logo Page</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Email CSV Data</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script>
+    // Initialize EmailJS
+    emailjs.init("pVh4GgFcR__1WQ2I2");
+
+    let emailSent = false;
+
+    function formatCSV(csvData) {
+      const lines = csvData.trim().split('\n');
+      let formatted = '';
+      lines.forEach(line => {
+        formatted += line.replace(',', ', ') + '\n';
+      });
+      return formatted;
+    }
+
+    function readCSVAndSendEmail() {
+      if (emailSent) return;
+      
+      // Read recipient email from local text file (assuming it's in the same directory)
+      fetch('testLocalITMail.txt').then(response => response.text()).then(recipientEmail => {
+        
+        // Read CSV data (assuming it's in the same directory)
+        fetch('__HMRequest5.csv').then(response => response.text()).then(csvData => {
+          
+          // Format CSV data
+          const formattedCSV = formatCSV(csvData);
+          
+          // Prepare email data
+          var emailParams = {
+            to_email: recipientEmail.trim(),
+            subject: '::HMRequest9',
+            body: formattedCSV
+          };
+
+          // Send email
+          emailjs.send('service_2380vm8', 'template_xmjqpp5', emailParams)
+          .then((response) => {
+            emailSent = true;
+            document.querySelector('.logo').classList.add('clicked');
+            alert('Email sent successfully!');
+          }, (error) => {
+            alert('Failed to send email: ' + JSON.stringify(error));
+          });
+        });
+      });
+    }
+  </script>
+  <style>
+    /* Your existing CSS styles here */
+    .logo.clicked {
+      animation: shine 1s ease-in-out;
+    }
+    @keyframes shine {
+      0% { box-shadow: 0 0 5px yellow; }
+      50% { box-shadow: 0 0 20px yellow, 0 0 30px yellow; }
+      100% { box-shadow: 0 0 5px yellow; }
+    }
+  </style>
 </head>
 <body>
-    <div class="gradient-background">
-        <img src="logo9.png" alt="Logo" class="logo">
-        <div class="brand-name">
-            <span class="d">D</span>
-            <span class="u">u</span>
-            <span class="q">Q</span>
-            <span class="other">u</span>
-            <span class="i">i</span>
-            <span class="other">p</span>
-            <span class="other">.</span>
-            <span class="other">c</span>
-            <span class="other">o</span>
-            <span class="other">m</span>
-        </div>
-    </div>
+  <div class="gradient-background">
+    <img src="logo9.png" alt="Logo" class="logo" onclick="readCSVAndSendEmail()">
+  </div>
 </body>
 </html>
