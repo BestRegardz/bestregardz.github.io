@@ -1,0 +1,19 @@
+question,answer
+usedDevice,Yes
+userFullName,Testing Testersson
+userEmailAddress,test@test.test
+userOffice,Stockholm
+userRole,Developer Consultant
+"device1Choice,""Macbook Pro 14"""" (M2, 16GB RAM, 256GB SSD)"""
+device1Used,No
+device1Color,Rymdgrå
+device1Option1,Swedish keyboard
+device1Storage,512 GB
+device1RAM,32 GB
+device1Motivation,I need this to build impressive worlds for Blizzard :D\nAnd I also like the silver exterior a lot I think it would be cool to have as overlay on a car.\nEspecially the dark one that you can get on the air! :D\n\nThank you!
+device2Choice,iPhone 15 Pro Max
+device2Used,Yes
+device2Color,Gold
+device2RAM,16 GB
+device2Storage,512 GB
+device2Motivation,I need this to impress my coworkers
