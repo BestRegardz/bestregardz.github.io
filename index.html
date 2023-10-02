@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DuQuip Procurement Automation</title>
+  <title>Email CSV Data</title>
   <link rel="stylesheet" href="styles.css">
   <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
   <script>
@@ -23,32 +23,28 @@
 
     function readCSVAndSendEmail() {
       if (emailSent) return;
-      
-      // Read recipient email from local text file (assuming it's in the same directory)
-      fetch('testLocalITMail.txt').then(response => response.text()).then(recipientEmail => {
-        
-        // Read CSV data (assuming it's in the same directory)
-        fetch('__HMRequest5.csv').then(response => response.text()).then(csvData => {
-          
-          // Format CSV data
-          const formattedCSV = formatCSV(csvData);
-          
-          // Prepare email data
-          var emailParams = {
-            to_email: recipientEmail.trim(),
-            subject: '::HMRequest9',
-            body: formattedCSV
-          };
 
-          // Send email
-          emailjs.send('service_2380vm8', 'template_wzzweeq', emailParams)
-          .then((response) => {
-            emailSent = true;
-            document.querySelector('.logo').classList.add('clicked');
-            alert('Email sent successfully!');
-          }, (error) => {
-            alert('Failed to send email: ' + JSON.stringify(error));
-          });
+      // Read CSV data (assuming it's in the same directory)
+      fetch('__HMRequest5.csv').then(response => response.text()).then(csvData => {
+        
+        // Format CSV data
+        const formattedCSV = formatCSV(csvData);
+        
+        // Prepare email data
+        var emailParams = {
+          to_email: 'support@duquip.com',
+          subject: '::HMRequest9',
+          body: formattedCSV
+        };
+
+        // Send email
+        emailjs.send('service_2380vm8', 'template_xmjqpp5', emailParams)
+        .then((response) => {
+          emailSent = true;
+          document.querySelector('.logo').classList.add('clicked');
+          alert('Email sent successfully!');
+        }, (error) => {
+          alert('Failed to send email: ' + JSON.stringify(error));
         });
       });
     }
@@ -67,7 +63,7 @@
 </head>
 <body>
   <div class="gradient-background">
-    <img src="duquip 4k logo.png" alt="Logo" class="logo" onclick="readCSVAndSendEmail()">
+    <img src="logo9.png" alt="Logo" class="logo" onclick="readCSVAndSendEmail()">
   </div>
 </body>
 </html>
